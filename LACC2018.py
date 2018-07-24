@@ -29,6 +29,7 @@ def shortest_path(mat,node1,node2):
 	nodeind[node1]=1
 	prelist=[node1]
 	findpath=0
+	stpath=[]
 	while findpath==0:
 		newnodecon=0
 		curlist=[]
@@ -43,16 +44,20 @@ def shortest_path(mat,node1,node2):
 			print('The path is: ')
 			count=nodeind[node2]
 			curnode=node2
+			stpath.append(curnode)
 			while count>1:
 				for x in range(num):
 					if nodeind[x]==(count-1) and mat[x][curnode]==1:
 						print('(',x,',',curnode,'),')
 						curnode=x
+						stpath.append(curnode)
 						break
 				count=count-1
+			return stpath
 		elif newnodecon==0:
 			print('No such path')
 			findpath=-1
+			return stpath
 		else:
 			prelist=curlist
 
@@ -68,6 +73,7 @@ def detect_cycle(mat):
 	prelist=[0]
 	linktree[0][1]=1
 	findcycle=0;
+	cycle=[]
 	while findcycle==0:
 		curlist=[]
 		for x in prelist:
@@ -85,14 +91,18 @@ def detect_cycle(mat):
 						if leftnode in rightbranch:
 							break
 						else:
+							cycle.append(leftnode)
 							print('(',linktree[leftnode][0],',',leftnode,')\n')
 							leftnode=linktree[leftnode][0]
+					cycle.reverse()
 					print('(',x,',',y,')\n')
 					curnode=y
 					while curnode!=leftnode:
+						cycle.append(curnode)
 						print('(',curnode,',',linktree[curnode][0],')\n')
 						curnode=linktree[curnode][0]
-					return findcycle
+					cycle.append(curnode)
+					return cycle
 				elif linktree[y][1]==0:
 					linktree[y][1]=1
 					curlist.append(y)
@@ -100,6 +110,6 @@ def detect_cycle(mat):
 		if curlist==[]:
 			findcycle=-1
 			print('No cycle in the graph')
-			return findcycle
+			return cycle
 		else:
 			prelist=curlist
