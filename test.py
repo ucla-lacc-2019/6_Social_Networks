@@ -1,4 +1,4 @@
-from LACC2018_E import matrix_load,print_degrees,shortest_path,detect_cycle
+from LACC2018_Solution import matrix_load,print_degrees,shortest_path,detect_cycle
 mat1=matrix_load("matrix.txt")
 print_degrees(mat1)
 shortest_path(mat1,1,4)
