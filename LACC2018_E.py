@@ -47,8 +47,7 @@ def print_degrees(mat):
 #
 # input: the adjacency matrix of the graph,node1,node2
 # output: 'The path is: ' appended with all edges on the path if there is one, otherwise print out 'No such path'
-# 
-# Note: You don't need to return anything. 
+# Note: at the same time, return a list containing all the nodes on the path if there is one, otherwise return []
 #
 #*************************************
 
@@ -65,7 +64,7 @@ def shortest_path(mat,node1,node2):
 # input: the adjacency matrix of the graph
 # output: 'Find a cycle, the first edge is: ' appended with an arbitrary edge on the cycle if there is one, otherwise print out 'No cycle in the graph'
 # 
-# Note: You don't need to return anything. 
+# Note: at the same time, return a list containing all the nodes on the cycle if there is one, otherwise return []
 #
 #*************************************
 

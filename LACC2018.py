@@ -72,7 +72,7 @@ def detect_cycle(mat):
 		linktree.append([-1,0,tmp])#parent,flag,neighbor
 	prelist=[0]
 	linktree[0][1]=1
-	findcycle=0;
+	findcycle=0
 	cycle=[]
 	while findcycle==0:
 		curlist=[]
