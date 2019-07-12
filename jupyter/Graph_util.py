@@ -86,7 +86,7 @@ def plot_graph(x_coords, y_coords, mat, annotate=True):
     N = len(x_coords)
     
     # Plot the nodes first
-    plt.scatter(x_coords, y_coords, label='nodes', color='green', marker='*', s=30)
+    plt.scatter(x_coords, y_coords, label='nodes', color='green', marker='*', s=30, zorder=2 )
 
     if annotate:
         for n in range(N):
@@ -96,7 +96,7 @@ def plot_graph(x_coords, y_coords, mat, annotate=True):
     for i in range(N):
         for j in range(i+1,N):
             if mat[i][j] == 1:
-                plt.plot( [x_coords[i], x_coords[j]], [y_coords[i], y_coords[j]], color='grey' )
+                plt.plot( [x_coords[i], x_coords[j]], [y_coords[i], y_coords[j]], color='grey', zorder=1 )
 
 
 
@@ -112,11 +112,11 @@ def plot_path(x_coords, y_coords, path):
     root = path[0][0]
     dest = path[-1][1]
 
-    plt.scatter( x_coords[root], y_coords[root], label='nodes', color='blue',  marker='o', s=30 )
-    plt.scatter( x_coords[dest], y_coords[dest], label='nodes', color='blue', marker='o', s=30 )
-
     for node1, node2 in path:
-        plt.plot( [x_coords[node1], x_coords[node2]], [y_coords[node1], y_coords[node2]], color='red' )
+        plt.plot( [x_coords[node1], x_coords[node2]], [y_coords[node1], y_coords[node2]], color='red', zorder=2 )
+        
+    plt.scatter( x_coords[root], y_coords[root], label='nodes', color='blue', marker='o', s=30, zorder=3 )
+    plt.scatter( x_coords[dest], y_coords[dest], label='nodes', color='blue', marker='o', s=30, zorder=3 )
 
 
 
